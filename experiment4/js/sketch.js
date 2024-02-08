@@ -118,7 +118,7 @@ function setup() {
      resizeCanvas(canvasContainer.width(),canvasContainer.height());
   });
   background(0);
-  //createCanvas(800, 600);
+  createCanvas(800, 600);
 
   videos.forEach(video => video.size(800, 600));
   videos.forEach(video => video.hide());
