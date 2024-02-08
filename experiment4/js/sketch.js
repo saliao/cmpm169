@@ -139,12 +139,6 @@ function draw() {
   
     var size = gifPositions[currentIndex].size;
     var position = gifPositions[currentIndex].position;
-
-    // Adjust positions based on canvas position
-    var canvasPosition = canvas.position();
-    var adjustedX = position[0] - canvasPosition.x;
-    var adjustedY = position[1] - canvasPosition.y;
-
     if (currentIndex === 8) {
       if (millis() - webcamStartTime > 15000) {
         nextVid();
@@ -155,16 +149,11 @@ function draw() {
   
     var videoBrightness = getAverageBrightness(currentFrame);
   
-    gif.position(adjustedX, adjustedY);
+    gif.position(position[0], position[1]);
     gif.size(size[0], size[1]);
   
     var adjustedBrightness = map(videoBrightness, 0, 255, 0.1, 1.5); 
     gif.style("filter", "brightness(" + adjustedBrightness + ")");
-    
-    // Adjust positions for videos
-    videos[currentIndex].position(adjustedX, adjustedY);
-    videos[currentIndex].size(size[0], size[1]);
-
     if (notstarted) {
       fill(255);
       textSize(32);
@@ -173,8 +162,6 @@ function draw() {
       return;
     }
 }
-
-
 function getAverageBrightness(img) {
   img.loadPixels();
   var totalBrightness = 0;
