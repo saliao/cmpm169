@@ -23,6 +23,7 @@ class MyClass {
         // code to run when method is called
     }
 }
+var notstarted = true;
 var webcamStartTime;
 var videos = [];
 
@@ -124,11 +125,7 @@ function setup() {
   videos.forEach(video => video.position(0, 0));
   
   
-  videos[currentIndex].position(0,0);
   
-  videos[currentIndex].show();
-  videos[currentIndex].play();
-  music.loop()
   videos.forEach(video => video.onended(nextVid));
   
 
@@ -138,29 +135,33 @@ function setup() {
 }
 
 function draw() {
-  background(0);
-
-  var size = gifPositions[currentIndex].size;
-  var position = gifPositions[currentIndex].position;
-  if (currentIndex === 8) {
-    if (millis() - webcamStartTime > 15000) {
-      nextVid();
+    background(0);
+  
+    var size = gifPositions[currentIndex].size;
+    var position = gifPositions[currentIndex].position;
+    if (currentIndex === 8) {
+      if (millis() - webcamStartTime > 15000) {
+        nextVid();
+        return;
+      }
+    }
+    var currentFrame = videos[currentIndex].get();
+  
+    var videoBrightness = getAverageBrightness(currentFrame);
+  
+    gif.position(position[0], position[1]);
+    gif.size(size[0], size[1]);
+  
+    var adjustedBrightness = map(videoBrightness, 0, 255, 0.1, 1.5); 
+    gif.style("filter", "brightness(" + adjustedBrightness + ")");
+    if (notstarted) {
+      fill(255);
+      textSize(32);
+      textAlign(CENTER, CENTER);
+      text("Press space to play", width / 2, height / 2);
       return;
     }
-  }
-  var currentFrame = videos[currentIndex].get();
-
-  var videoBrightness = getAverageBrightness(currentFrame);
-
-  gif.position(position[0], position[1]);
-  gif.size(size[0], size[1]);
-
-  var adjustedBrightness = map(videoBrightness, 0, 255, 0.1, 1.5); 
-  gif.style("filter", "brightness(" + adjustedBrightness + ")");
-  
- 
 }
-
 function getAverageBrightness(img) {
   img.loadPixels();
   var totalBrightness = 0;
@@ -202,28 +203,17 @@ function nextVid() {
       webcamStartTime = millis();
     }
   }
-  function mousePressed() {
-  gifClickable = !gifClickable;
-
-  if (gifClickable) {
-    videos[currentIndex].play();
-    music.loop();
-  } else {
-    videos[currentIndex].pause();
-    music.stop();
-    videos[currentIndex].currentTime(0); // Reset video to the beginning
-  }
-}function mousePressed() {
-    gifClickable = !gifClickable;
-  
-    if (gifClickable) {
-      videos[currentIndex].play();
+}
+function keyPressed() {
+    console.log("Key pressed");
+    if (keyCode === 32 && notstarted == true) {
+      notstarted = false;
+      
+      if (videos[currentIndex]) {
+        videos[currentIndex].show();
+        videos[currentIndex].play();
+      } 
       music.loop();
-    } else {
-      videos[currentIndex].pause();
-      music.stop();
-      videos[currentIndex].currentTime(0); // Reset video to the beginning
+      
     }
   }
-}
-
