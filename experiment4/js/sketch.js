@@ -202,5 +202,28 @@ function nextVid() {
       webcamStartTime = millis();
     }
   }
+  function mousePressed() {
+  gifClickable = !gifClickable;
+
+  if (gifClickable) {
+    videos[currentIndex].play();
+    music.loop();
+  } else {
+    videos[currentIndex].pause();
+    music.stop();
+    videos[currentIndex].currentTime(0); // Reset video to the beginning
+  }
+}function mousePressed() {
+    gifClickable = !gifClickable;
+  
+    if (gifClickable) {
+      videos[currentIndex].play();
+      music.loop();
+    } else {
+      videos[currentIndex].pause();
+      music.stop();
+      videos[currentIndex].currentTime(0); // Reset video to the beginning
+    }
+  }
 }
 
