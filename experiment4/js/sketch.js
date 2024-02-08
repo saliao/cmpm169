@@ -161,6 +161,10 @@ function draw() {
     var adjustedBrightness = map(videoBrightness, 0, 255, 0.1, 1.5); 
     gif.style("filter", "brightness(" + adjustedBrightness + ")");
     
+    // Adjust positions for videos
+    videos[currentIndex].position(adjustedX, adjustedY);
+    videos[currentIndex].size(size[0], size[1]);
+
     if (notstarted) {
       fill(255);
       textSize(32);
@@ -169,6 +173,7 @@ function draw() {
       return;
     }
 }
+
 
 function getAverageBrightness(img) {
   img.loadPixels();
