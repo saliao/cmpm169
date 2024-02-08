@@ -113,6 +113,7 @@ function setup() {
   //
   canvasContainer = $("#canvas-container");
   let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
+  canvas.parent("canvas-container");
   $(window).resize(function(){
      console.log("Resizing...");
      resizeCanvas(canvasContainer.width(),canvasContainer.height());
