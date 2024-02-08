@@ -103,7 +103,7 @@ function preload() {
   
   
   //Girl Dancing Gif
-  gif = loadImage("dance-hat-in-time.gif");
+  
   gif = createImg("https://saliao.github.io/p5.js-files/dance-hat-in-time.gif");
   
 }
@@ -117,7 +117,7 @@ function setup() {
      resizeCanvas(canvasContainer.width(),canvasContainer.height());
   });
   background(0);
-  createCanvas(800, 600);
+  //createCanvas(800, 600);
 
   videos.forEach(video => video.size(800, 600));
   videos.forEach(video => video.hide());
