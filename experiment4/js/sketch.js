@@ -4,7 +4,25 @@
 
 // Here is how you might set up an OOP p5.js project
 // Note that p5.js looks for a file called sketch.js
+// Constants - User-servicable parts
+// In a longer project I like to put these in a separate file
+const VALUE1 = 1;
+const VALUE2 = 2;
 
+// Globals
+let myInstance;
+let canvasContainer;
+
+class MyClass {
+    constructor(param1, param2) {
+        this.property1 = param1;
+        this.property2 = param2;
+    }
+
+    myMethod() {
+        // code to run when method is called
+    }
+}
 var webcamStartTime;
 var videos = [];
 
@@ -92,6 +110,12 @@ function preload() {
 
 function setup() {
   //
+  canvasContainer("#canvas-container");
+  let canvas = createCanvas(Container.width(), canvas.parent("canvas-container"));
+  $(window).resize(function(){
+     console.log("Resizing...");
+     resizeCanvas(canvasContainer.width(),canvasContainer.height());
+  });
   background(0);
   createCanvas(800, 600);
 
