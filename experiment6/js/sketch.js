@@ -171,7 +171,7 @@ function setup() {
     
     
   createCanvas(800, 800);
-  textAlign(CENTER, CENTER);
+  textAlign(CENTER, BOTTOM);
 button = createButton('insult me');
   button.position(width/2-50, height/2);
 
