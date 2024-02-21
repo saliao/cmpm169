@@ -165,6 +165,7 @@ let dingSound;
 function preload() {
     ding = loadSound('https://saliao.github.io/p5.js-files/ding.mp3');
 }
+let button;
 function setup() {
   grammar = createTraceryGrammar();
   insult = flattenGrammar();
@@ -172,7 +173,7 @@ function setup() {
     
   createCanvas(800, 800);
   textAlign(CENTER, CENTER);
-  var button = createButton('insult me');
+  button = createButton('insult me');
   button.position(width/2-50, height/2);
 
   // Use the button to change the background color.
