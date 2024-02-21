@@ -174,7 +174,7 @@ function setup() {
   createCanvas(800, 800);
   textAlign(CENTER, CENTER);
   button = createButton('insult me');
-  button.position(width, height*2.5);
+  button.position(width, height);
 
   // Use the button to change the background color.
   button.mousePressed(() => {
