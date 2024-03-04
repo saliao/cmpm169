@@ -55,8 +55,10 @@
 
             <div class="minor-section">
                 <h2>Results</h2>
-                <div id="plotlyDiv" style="display: flex; justify-content: center; align-items: center;">
-                    <div id="standImageContainer" class="root-background">
+                <div id="plotlyDiv" style="position: relative;">
+                    <!-- Plotly.js container -->
+                    <div id="standImageContainer" class="root-background" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                        <!-- Image container -->
                         <img id="standImage" src="https://saliao.github.io/p5.js-files/Transparent.png" style="max-width: 100%; max-height: 100%;">
                     </div>
                 </div>
