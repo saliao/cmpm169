@@ -16,7 +16,11 @@ body {
   
 }
 
-
+#plotlyDiv {
+    /* Add your styles for the plotlyDiv if needed */
+  
+  
+}
 
 #standImage {
     transform: translate(0%, +6%);
